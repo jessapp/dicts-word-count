@@ -10,17 +10,18 @@ def word_count(filename):
 
     my_file = open(filename).read()
 
-    my_words = {}
-
     # Strip off punctuation
     my_file = my_file.translate(None, string.punctuation)
+    my_file = my_file.replace('\n', ' ')
     # Strip off trailing white space and split on spaces
-    words = line.rstrip().split(" ")
+    words = my_file.split(" ")
+
+    word_count = Counter(words)
 
     # Add word counts to dictionary
-    for word in words:
-        word = word.lower()
-        my_words[word] = my_words.get(word, 0) + 1
+    # for word in words:
+    #     word = word.lower()
+    #     my_words[word] = my_words.get(word, 0) + 1
 
 
     #for key_value in my_words.iteritems():
@@ -30,7 +31,7 @@ def word_count(filename):
     #for key in my_words:
     #   print key, my_words[key]
 
-    for key, value in my_words.iteritems():
+    for key, value in word_count.iteritems():
         print key, value
 
 arg1 = sys.argv[1]
