@@ -4,22 +4,23 @@ import string
 
 import sys
 
+from collections import Counter
+
 def word_count(filename):
 
-    my_file = open(filename)
+    my_file = open(filename).read()
 
     my_words = {}
 
-    for line in my_file:
-        # Strip off punctuation
-        line = line.translate(None, string.punctuation)
-        # Strip off trailing white space and split on spaces
-        words = line.rstrip().split(" ")
+    # Strip off punctuation
+    my_file = my_file.translate(None, string.punctuation)
+    # Strip off trailing white space and split on spaces
+    words = line.rstrip().split(" ")
 
-        # Add word counts to dictionary
-        for word in words:
-            word = word.lower()
-            my_words[word] = my_words.get(word, 0) + 1
+    # Add word counts to dictionary
+    for word in words:
+        word = word.lower()
+        my_words[word] = my_words.get(word, 0) + 1
 
 
     #for key_value in my_words.iteritems():
